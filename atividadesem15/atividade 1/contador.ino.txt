@@ -1,0 +1,33 @@
+#define pin_led1 8 	// define o a saida do led 1
+#define pin_led2 9 	// define o a saida do led 2
+#define pin_led3 10 	// define o a saida do led 3
+#define pin_led4 11	// define o a saida do led 4
+#define pin_botao1 2	// define o a saida do botão
+#define pin_botao2 3	// define o a saida do botão 2
+int cont = 0;
+bool aux = 0;
+
+
+void setup() {
+  pinMode(pin_led1, OUTPUT);
+  pinMode(pin_led2, OUTPUT);
+  pinMode(pin_led3, OUTPUT);
+  pinMode(pin_led4, OUTPUT);
+  pinMode(pin_botao1, INPUT);
+  pinMode(pin_botao2, INPUT);
+  Serial.begin(9600);
+}
+
+void loop() {
+  bool botao1 = digitalRead(pin_botao1);
+  bool botao2 = digitalRead(pin_botao2);
+  // testando os botoes
+  if (botao1 == 1) {
+    if (aux == 0){
+      cont++;
+      aux = 1;
+    }
+  } else{
+    aux = 0;
+  }Serial.println(cont);
+}
